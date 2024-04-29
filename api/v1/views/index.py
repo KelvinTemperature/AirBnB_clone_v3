@@ -8,6 +8,7 @@ from models import storage
 def status():
     return jsonify({"status": "OK"})
 
+
 @app_views.route('/api/v1/stats', strickly_slashes=False)
 def stats():
     count = storage.count()
