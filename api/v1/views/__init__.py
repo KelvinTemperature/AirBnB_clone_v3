@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""Init File"""
 from flask import Blueprint
 from api.v1.views.index import *
 from api.v1.views.state import *
