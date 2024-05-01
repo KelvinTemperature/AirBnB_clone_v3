@@ -6,14 +6,14 @@ from api.v1.views import app_views
 from flask import jsonify, make_response, abort, request
 
 
-@app_views.route('/state', methods=['GET'], strick_slashes=False)
+@app_views.route('/state', methods=['GET'], strict_slashes=False)
 def state():
     """get the list of all state object"""
     d_states = storage.all(State)
     return jsonify([obj.to_dict() for obj in d_states.values()])
 
 
-@app_views.route('/state/<state_id>', methods=['GET'], strick_slashes=False)
+@app_views.route('/state/<state_id>', methods=['GET'], strict_slashes=False)
 def state_spec(staet_id):
     """returns the state with the given state_id"""
     state = storage.get("State", state_id)
@@ -23,7 +23,7 @@ def state_spec(staet_id):
     return jsonify(state.to_dict())
 
 
-@app_views.route('/state/<state_id>', methods=['DELETE'], strick_slashes=False)
+@app_views.route('/state/<state_id>', methods=['DELETE'], strict_slashes=False)
 def del_state(state_id):
     """delete state of the given state_id"""
     state = storage.get("State", state_id)
@@ -35,7 +35,7 @@ def del_state(state_id):
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/state', methods=['POST'], strick_slashes=False)
+@app_views.route('/state', methods=['POST'], strict_slashes=False)
 def post_state():
     """creates a neww state"""
     body = request.get_json()
@@ -51,7 +51,7 @@ def post_state():
     return make_response(jsonify(state.to_dict()), 201)
 
 
-@app_views.route('/state/<state_id>', methods=['PUT'], strick_slashes=False)
+@app_views.route('/state/<state_id>', methods=['PUT'], strict_slashes=False)
 def put_state(state_id):
     """update the state with the given state_id"""
     state = storage.get("State", state_id)

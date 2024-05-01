@@ -11,7 +11,7 @@ app.register_blueprint(app_views)
 
 
 @app.teardown_appcontext
-def teardown_app():
+def teardown_app(Exception):
     """Closes storage session"""
     storage.close()
 
